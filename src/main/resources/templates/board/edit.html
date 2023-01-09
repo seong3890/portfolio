@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 1000px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .field-error {
+            color: red;
+            border-color: red;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Board</title>
+</head>
+<body>
+<div class="container" style="text-align: center">
+    <h2><a th:href="@{/}">home</a></h2>
+    <div>
+        <form th:action th:object="${post}" th:method="post" >
+
+
+            <table class="table-dark" style="width: 100%" th:border="1">
+                <tr>
+                    <th th:width="70" th:text="#{table.title}">제목</th>
+                    <td><input type="text" th:field="*{title}" th:errorclass="field-error" th:class="form-control"></td>
+                    <div th:errors="*{title}"></div>
+                </tr>
+                <tr>
+                    <th th:text="#{table.write}">작성자</th>
+                    <td><input type="text" th:value="${post.nickname}" readonly class="form-control"></td>
+                </tr>
+                <tr>
+                    <th th:text="#{table.inquiry}">문의 유형</th>
+                    <th>
+                        <div>
+                            <select class="custom-select" id="inquiry" name="inquiry">
+                                <option th:value="${post.inquiryId}" th:text="${post.inquiry}"></option>
+                                <option th:each="inquirys:${inquiry}"
+                                        th:value="${inquirys.id}"
+                                        th:text="${inquirys.inquiry}"></option>
+                            </select>
+                        </div>
+                    </th>
+<!--                    <td><input type="text" th:field="*{inquiry}" th:errorclass="field-error" th:class="container"></td>-->
+                    <div th:errors="*{inquiry}"></div>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><textarea th:field="*{write}" cols="100" rows="25"></textarea></td>
+                </tr>
+            </table>
+            <hr>
+            <button class="btn-success" type="submit">수정</button>
+            <button class="btn-danger" type="button"
+                    th:onclick="|location.href='@{/board/{boardId}(boardId=${post.id})}'|">취소
+            </button>
+            <button class="btn-primary" type="button" th:onclick="|location.href='@{/board}'|">목록</button>
+
+        </form>
+    </div>
+    <!--  <div class="text-body">
+          <span th:text="${postDto.title}"></span>
+      </div>
+      <div class="text-body">
+          <span style="text-align: left" th:text="${postDto.write}"></span>
+      </div>-->
+
+</div>
+</body>
+</html>

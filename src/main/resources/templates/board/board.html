@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/header :: header(~{::title})">
+
+
+    <meta charset="UTF-8">
+    <title>Board</title>
+</head>
+<body>
+<div class="container" style="text-align: center">
+    <h2><a th:href="@{/}">home</a></h2>
+    <div>
+        <table class="table-dark" style="width: 100%">
+            <tr>
+                <th>제목</th>
+                <td th:text="${postDto.title}"></td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td th:text="${postDto.nickname}"></td>
+            </tr>
+            <tr>
+                <th>유형</th>
+                <td th:text="${postDto.inquiry}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><textarea th:text="${postDto.write}" readonly cols="100" rows="30"></textarea></td>
+            </tr>
+        </table>
+        <hr>
+        <button th:onclick="|location.href='@{/board/{boardId}/edit(boardId=${postDto.id})}'|" class="btn-secondary">
+            수정
+        </button>
+<!--        <a role="button" class="btn-danger" th:href="@{/board/{boardId}/delete(boardId=${postDto.id})}" th:method="post">삭제</a>-->
+        <a role="button" class="btn-primary" th:href="'javascript:del('+${postDto.id}+')'">삭제</a>
+        <button th:onclick="|location.href='javascript:del('+${postDto.id}+')'|" class="btn-primary">삭제2</button>
+        <!--        <button th:href="@{/board/{boardId}/edit(boardId=${postDto.id})}">수정</button>-->
+        <button th:onclick="|location.href='@{/board}'|" class="btn-primary">목록</button>
+
+
+    </div>
+    <!--  <div class="text-body">
+          <span th:text="${postDto.title}"></span>
+      </div>
+      <div class="text-body">
+          <span style="text-align: left" th:text="${postDto.write}"></span>
+      </div>-->
+
+</div>
+<footer th:replace="layout/footer :: footer">
+
+</footer>
+<div>
+
+
+</div>
+</body>
+<script>
+    function del(id) {
+        $.ajax({
+            type: "DELETE",
+            url: "/board/" + id + "/delete",
+            dataType: "json",
+            contentType: "application/json; utf-8"
+        }).done(function () {
+            alert("글이 삭제되었습니다.");
+            window.location.href = "/board";
+        }).fail(function (e) {
+            alert(JSON.stringify(e));
+
+
+        });
+
+
+    }
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.css}">
+    <style>
+        .container {
+            max-width: 750px;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <title>LoginHome</title>
+</head>
+<body>
+<div class="page-item">
+<table>
+    <thead>
+    <tr>
+        <th>아이디</th>
+        <th>별명</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="list:${page}">
+        <td th:text="${list.username}">아이디</td>
+        <td th:text="${list.nickname}">별명</td>
+
+    </tr>
+    </tbody>
+</table>
+    <nav style="text-align: center;">
+        <ul class="pagination" th:with="start=${(page.number/maxPage)*maxPage + 1}, end=(${(page.totalPages == 0) ? 1 : (start + (maxPage - 1) < page.totalPages ? start + (maxPage - 1) : page.totalPages)})">
+            <li th:if="${start > 1}">
+                <a th:href="@{/admin/main(page=0)}" th:text="'<<'"></a>
+            </li>
+            <li th:if="${start > 1}">
+                <a th:href="@{/admin/main(page=${start - maxPage})}" th:text="'<'"></a>
+            </li>
+
+            <li th:each="page: ${#numbers.sequence(start, end)}">
+                <a th:text="${page}" th:href="@{/pageing(page=${page - 1})}"></a>
+            </li>
+
+            <li th:if="${end < page.totalPages}">
+                <a th:href="@{/admin/main(page=${start + maxPage})}" th:text="'>'"></a>
+            </li>
+            <li th:if="${end < page.totalPages}">
+                <a th:href="@{/admin/main(page=${page.totalPages - 1})}" th:text="'>>'"></a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+</body>
+<!--  <th:block th:each="pages:${#numbers.sequence(startPage,endPage)}">
+      <a th:if="${pages!=nowPage}" th:href="@{/pageing(pagessss=${pages -1})}" th:text="${pages}"></a>
+      <strong th:if="${pages==nowPage}" th:text="${pages}" style="color: red"></strong>
+  </th:block>-->
+</html>

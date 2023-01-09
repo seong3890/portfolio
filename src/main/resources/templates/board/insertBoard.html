@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 1000px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .field-error {
+            color: red;
+            border-color: red;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>BoardList</title>
+</head>
+<body>
+<div class="container">
+    <div>
+
+    </div>
+    <form th:action th:method="post" th:object="${postDto}">
+
+        <input type="hidden" th:value="${memberId}" name="memberId" id="memberId">
+        <table class="table-dark" th:border="1" style="width: 100%">
+            <tr>
+                <th th:width="70" >제목</th>
+                <td><input type="text" th:field="${postDto.title}"></td>
+
+            </tr>
+
+            <tr>
+                <th th:width="70">작성자</th>
+                <td><input type="text" th:value="${nickname}" readonly class="form-control"></td>
+
+            </tr>
+
+            <tr>
+                <th th:width="70">문의유형</th>
+                <td><select id="inquiryId" name="inquiryId" th:value="${inquiry}" class="custom-select">
+                    <option value="">문의 유형</option>
+                    <option th:each="inquirys:${inquiry}"
+                            th:value="${inquirys.id}"
+                            th:text="${inquirys.inquiry}"></option>
+
+                </select>
+<!--                <div class="field-error" th:errors="${range.id}"></div>-->
+                </td>
+
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><textarea cols="120" rows="25" th:field="*{write}"></textarea></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" th:align="center">
+                    <button class="btn-primary" type="submit">등록</button>
+                    <button class="btn-danger" type="button" th:onclick="|location.href='@{/}'|">취소</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

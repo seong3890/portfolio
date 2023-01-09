@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/header :: header(~{::title})">
+    <meta charset="UTF-8">
+
+    <title>LoginHome</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h2>스프링부트 게시판</h2>
+    </div>
+  <div class="row">
+    <h4 class="m-lg-auto"></h4>
+    <h4 class="mb-3" th:text="|로그인:${member.username}|" >로그인 사용자 이름</h4>
+    <div class="col">
+    <button class="btn-primary" type="button" th:onclick="|location.href='@{/logout}'|">로그아웃</button>
+    <button class="btn-primary" type="button" th:onclick="|location.href='@{/board}'|">고객문의</button>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
