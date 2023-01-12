@@ -7,6 +7,9 @@ import yms.shopping.portfolio.domain.Member;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
@@ -27,6 +30,9 @@ public class Order {
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
+
+    @OneToMany(mappedBy = "order")
+    List<orderInfo> orderInfos = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;

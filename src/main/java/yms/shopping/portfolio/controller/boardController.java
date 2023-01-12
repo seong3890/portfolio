@@ -34,6 +34,27 @@ public class boardController {
     private final InquiryService inquiryService;
     private final PostJpaRepository postJpaRepository;
 
+
+    /**
+     * 화면 페이지 O 검색 O
+     */
+
+    @GetMapping
+    public String boardListSearchPage(@PageableDefault(size = 5, page = 0) Pageable pageable
+            ,@ModelAttribute("search") BoardSearch search, Model model) {
+        Page<BoardPostDto> postDto2 = boardService.findItemListSearchPage(search,pageable);
+        log.info("number={}", postDto2.getNumber());
+        log.info("getTotalPages={}", postDto2.getTotalPages());
+        log.info("getTotalElements={}", postDto2.getTotalElements());
+        double floor = Math.floor((postDto2.getNumber() / 10) * 10);
+
+        log.info("start={}", floor);
+
+        model.addAttribute("post", postDto2);
+        return "board/list";
+    }
+
+
     /**
      * 단순 화면 페이지 X 검색 X
      */
@@ -70,33 +91,12 @@ public class boardController {
         return "board/list";
     }
 
-    /**
-     * 화면 페이지 O 검색 O
-     */
 
-    @GetMapping
-    public String boardListSearchPage(@PageableDefault(size = 5, page = 0) Pageable pageable
-            ,@ModelAttribute("search") BoardSearch search, Model model) {
-        Page<BoardPostDto> postDto2 = boardService.findItemListSearchPage(search,pageable);
-        log.info("number={}", postDto2.getNumber());
-        log.info("getTotalPages={}", postDto2.getTotalPages());
-        log.info("getTotalElements={}", postDto2.getTotalElements());
-        double floor = Math.floor((postDto2.getNumber() / 10) * 10);
-
-        log.info("start={}", floor);
-
-//        List<BoardPostDto> postDto2 = postList.stream().map(post -> new BoardPostDto(post)).collect(toList());
-//        List<BoardPostDto> postDto2 = postList.stream().map(post -> BoardPostDto.createBoardPostDto(post)).collect(toList());
-//        log.info("nickname={}",postList.get(0).getMember().getNickname());
-
-        model.addAttribute("post", postDto2);
-        return "board/list";
-    }
 
 
     /**
      * 개선 필요
-     * 굳이 dto 로 변환할 필요가 있을까?
+     * 굳이 dto 로 변환할 필요가 있을까? -> 바꾸는 게 좋다.
      * repository 에서 바로 dto 로 변환할 수도 있다.
      */
     @GetMapping("/{boardId}")

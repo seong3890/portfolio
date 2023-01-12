@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout/header :: header(~{::title})">
+    <meta charset="UTF-8">
+    <title>상품등록</title>
+</head>
+<body>
+<div class="container">
+    <form th:action th:object="${item}" enctype="multipart/form-data" method="post">
+        <input type="hidden" th:value="${memberId}" name="memberId" id="memberId">
+
+        <div class="col-md-7">
+            <div class="form-group">
+                <label for="name" th:text="#{label.items.name}"></label>
+                <input type="text" id="name" th:field="*{name}" th:errorclass="field-error" class="form-control">
+                <div th:errors="*{name}" class="field-error">상품명오류</div>
+            </div>
+
+            <div class="form-group">
+                <label for="writer" th:text="#{label.items.writer}"></label>
+                <input type="text" id="writer" th:field="*{writer}" th:errorclass="field-error" class="form-control">
+                <div th:errors="*{writer}" class="field-error">작성자 오류</div>
+            </div>
+
+            <div class="form-group">
+                <label for="price" th:text="#{label.items.price}"></label>
+                <input type="text" id="price" th:field="*{price}" th:errorclass="field-error" class="form-control">
+                <div th:errors="*{price}" class="field-error">가격오류</div>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity" th:text="#{label.items.quantity}"></label>
+                <input type="text" id="quantity" th:field="*{quantity}" th:errorclass="field-error" class="form-control">
+                <div th:errors="*{quantity}" class="field-error">수량오류</div>
+            </div>
+
+            <div class="form-group">
+                <label for="isbn" th:text="#{label.items.isbn}"></label>
+                <input type="text" id="isbn" th:field="*{isbn}" th:errorclass="field-error" class="form-control">
+                <div th:errors="*{isbn}"class="field-error">isbn오류</div>
+            </div>
+            <div class="form-control-file">
+                <input type="file" multiple="multiple" th:field="*{uploadImageDtos}">
+            </div>
+
+        </div>
+        <button type="submit" class="btn-primary">등록</button>
+        <button type="button" class="btn-primary" th:onclick="|location.href='@{/item}'|">취소</button>
+
+    </form>
+</div>
+</body>
+</html>

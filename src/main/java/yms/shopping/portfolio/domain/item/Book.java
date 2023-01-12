@@ -1,5 +1,6 @@
 package yms.shopping.portfolio.domain.item;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 

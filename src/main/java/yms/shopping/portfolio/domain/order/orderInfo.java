@@ -1,6 +1,7 @@
 package yms.shopping.portfolio.domain.order;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import yms.shopping.portfolio.domain.item.Items;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import static javax.persistence.FetchType.*;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class orderInfo {
 
     @Id

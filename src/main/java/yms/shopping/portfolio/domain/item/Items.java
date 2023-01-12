@@ -2,6 +2,7 @@ package yms.shopping.portfolio.domain.item;
 
 import lombok.Getter;
 import lombok.Setter;
+import yms.shopping.portfolio.domain.Member;
 
 import javax.persistence.*;
 
@@ -20,4 +21,26 @@ public abstract class Items {
     private String name;
     private String creator;
     private int price;
+    private int quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "uploadImage_id")
+    private UploadImage uploadImage;
+
+
+
+    public void addQuantity(int quantity) {
+        this.quantity += quantity;
+    }
+
+    public void removeQuantity(int quantity) {
+        if (this.quantity - quantity < 0) {
+            throw new RuntimeException("수량이 부족합니다");
+        }
+        this.quantity = this.quantity - quantity;
+    }
 }
