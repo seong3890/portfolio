@@ -6,13 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import yms.shopping.portfolio.domain.BaseTimeEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UploadImage extends BaseTimeEntity {
 
@@ -22,6 +21,10 @@ public class UploadImage extends BaseTimeEntity {
 
     private String uploadFiles;
     private String storeFileName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "items_id")
+    private Items items;
 
 
 

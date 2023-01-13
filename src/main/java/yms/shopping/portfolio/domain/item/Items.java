@@ -5,6 +5,8 @@ import lombok.Setter;
 import yms.shopping.portfolio.domain.Member;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -27,9 +29,8 @@ public abstract class Items {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "uploadImage_id")
-    private UploadImage uploadImage;
+    @OneToMany(mappedBy = "items")
+    private List<UploadImage> uploadImage=new ArrayList<>();
 
 
 

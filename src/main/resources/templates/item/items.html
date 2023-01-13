@@ -6,7 +6,20 @@
 </head>
 <body>
 <div class="container">
+    <div th:colspan="3">
+        <table class="table-primary">
+            <tr th:each="items:${item}">
+                <td th:text="${items.name}"></td>
+<!--                <td><img th:src="|/images/${items.uploadDtos}|"></td>-->
+<!--                <td><img th:each="image:${items.uploadDtos}" th:src="|/images/${image.getStoreFileName()}|" width="300"height="300">  </td>-->
+                <td><img  th:src="|/images/${items.uploadDto.storeFileName}|" width="300"height="300">  </td>
+            </tr>
+        </table>
 
+
+
+
+    </div>
 </div>
 </body>
 </html>

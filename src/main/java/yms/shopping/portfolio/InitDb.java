@@ -20,7 +20,7 @@ public class InitDb {
 
     private final HelloDb HelloDb;
 
- //   @PostConstruct
+  //  @PostConstruct
     public void init2() {
         HelloDb.init();
         //  HelloDb.itemInit();
