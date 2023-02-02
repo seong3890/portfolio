@@ -79,3 +79,17 @@ aws 배포, 상품 삭제, 시큐리티 적용 등 아직 할 게 산더미이�
 	
 	
 </div>
+<div>
+<h1>사진</h1>
+<details>
+<summary>사진</summary>
+<img width="80%" src="https://user-images.githubusercontent.com/74175871/216360666-292ee415-bad8-4476-bc4f-f46068d4ea91.JPG"/><br/>
+<img width="80%" src="https://user-images.githubusercontent.com/74175871/216359902-a5bdbd28-34d8-4137-b50d-6781b112d5e8.JPG"/><br/>
+<img width="80%" src="https://user-images.githubusercontent.com/74175871/216360493-7d745143-302a-4044-915c-da223ae3ae1e.JPG"/><br/>
+인프런-JPA 최적화 강의 참고</br>
+<img width="80%" src="https://user-images.githubusercontent.com/74175871/216360807-e6852f10-1bda-463e-a010-471ba2c36002.JPG"/><br/>
+<img width="80%" src="https://user-images.githubusercontent.com/74175871/216360895-8097332f-c0dd-4d83-94a9-a99d36a5b5b2.JPG"/><br/>
+
+</details>
+</div>
+
