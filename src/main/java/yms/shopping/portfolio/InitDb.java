@@ -20,7 +20,7 @@ public class InitDb {
 
     private final HelloDb HelloDb;
 
-  //  @PostConstruct
+   // @PostConstruct
     public void init2() {
         HelloDb.init();
         //  HelloDb.itemInit();
@@ -42,11 +42,12 @@ public class InitDb {
                 em.persist(post);
 
             }*/
-            Member member = new Member();
+            /*Member member = new Member();
             member.setUsername("asd");
             member.setNickname("kane123");
-            member.setPassword("asdasd12#");
-            em.persist(member);
+            member.setPassword("asdasd123");
+            member.setEmail("asdasd");
+            em.persist(member);*/
           /*  Book book = createBook("jpa책", "김태진", 10000,100,"2331");
             em.persist(book);
             Book book2 = createBook("jpa책2", "김태순", 20000,100,"23123");

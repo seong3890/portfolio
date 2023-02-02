@@ -1,4 +1,4 @@
-package yms.shopping.portfolio.interceptor;
+package yms.shopping.portfolio.config.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;

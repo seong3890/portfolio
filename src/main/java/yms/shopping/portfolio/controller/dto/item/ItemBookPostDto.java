@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemBookDto {
+public class ItemBookPostDto {
 
     @NotBlank
     private String name;

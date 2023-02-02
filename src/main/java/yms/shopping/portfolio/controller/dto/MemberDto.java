@@ -30,7 +30,7 @@ public class MemberDto {
 
     public Member createMember(MemberDto memberDto) {
         Member member = new Member(memberDto.getUsername(), memberDto.getNickname(), memberDto.getPassword()
-                , new Address(memberDto.getCity(), memberDto.getAddress()), LocalDateTime.now());
+                , new Address(memberDto.getCity(), memberDto.getAddress()));
         return member;
     }
 }

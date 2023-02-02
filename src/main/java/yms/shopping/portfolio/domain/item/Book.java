@@ -14,4 +14,6 @@ import javax.persistence.Entity;
 public class Book extends Items {
     private String writer;
     private String isbn;
+
+
 }

@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import yms.shopping.portfolio.domain.Member;
 import yms.shopping.portfolio.repository.MemberJpaRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -28,5 +30,10 @@ public class MemberServiceImpl {
 
     public Member findMember(Long id) {
         return memberJpaRepository.findById(id).orElse(null);
+    }
+
+    public List<Member> findMembers() {
+        List<Member> members = memberJpaRepository.findAll();
+        return members;
     }
 }

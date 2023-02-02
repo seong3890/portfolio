@@ -1,31 +1,22 @@
 package yms.shopping.portfolio.repository.query;
 
-import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 import yms.shopping.portfolio.controller.dto.BoardPostDto;
 import yms.shopping.portfolio.controller.dto.BoardSearch;
 import yms.shopping.portfolio.controller.dto.QBoardPostDto;
 import yms.shopping.portfolio.controller.dto.UpdateBoardPostDto;
-import yms.shopping.portfolio.domain.QMember;
-import yms.shopping.portfolio.domain.board.QInquiry;
-import yms.shopping.portfolio.domain.board.QPost;
 
 import javax.persistence.EntityManager;
-
 import java.util.List;
 
-import static org.springframework.util.StringUtils.*;
+import static org.springframework.util.StringUtils.hasText;
 import static yms.shopping.portfolio.domain.QMember.member;
 import static yms.shopping.portfolio.domain.board.QInquiry.inquiry1;
 import static yms.shopping.portfolio.domain.board.QPost.post;
@@ -85,7 +76,7 @@ public class PostQueryRepository {
                 .leftJoin(post.member, member)
                 .where(nicknameEq(search.getNickname()), titleEq(search.getTitle()));
 
-        return PageableExecutionUtils.getPage(pageContents,pageable, countQuery::fetchOne);
+        return PageableExecutionUtils.getPage(pageContents,pageable, () -> countQuery.fetchOne());
 
 
     }

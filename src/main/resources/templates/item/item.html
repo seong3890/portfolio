@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout/header :: header(~{::title})">
+    <meta charset="UTF-8">
+    <title>상품상세정보</title>
+</head>
+<body>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>상품명</th>
+                <th>이미지</th>
+
+            </tr>
+            </thead>
+            <tr>
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.name}"></td>
+<!--                                <td><img th:src="|/images/${item.uploadDtos}|"></td>-->
+                <!--                <td><img th:each="image:${items.uploadDtos}" th:src="|/images/${image.getStoreFileName()}|" width="300"height="300">  </td>-->
+<!--                <td><img  th:src="|/images/${item.uploadDto.storeFileName}|" width="300"height="300">  </td>-->
+                <td><img th:each="image:${item.uploadDtos}" th:src="|/images/${image.getStoreFileName()}|" width="300"height="300">  </td>
+            </tr>
+        </table>
+        <th:block><button type="button" th:onclick="|location.href='@{/}'|">메인화면</button></th:block>
+        <th:block><button type="button" th:onclick="|location.href='@{/item/{itemId}/edit(itemId=${item.id})}'|">수정</button></th:block>
+
+
+
+
+    </div>
+</div>
+</body>
+</html>

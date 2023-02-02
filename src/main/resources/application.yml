@@ -1,3 +1,4 @@
+
 spring:
   datasource:
 #    url: jdbc:h2:mem:localdb
@@ -25,6 +26,10 @@ spring:
     console:
 #      path: /h2-console
       enabled: true
+
+  profiles:
+    active: local
+
 logging.level:
   org.hibernate.SQL: debug
 #  org.hibernate.type: trace

@@ -26,7 +26,7 @@ class MemberTest {
 
     @Test
     void memberInsert() {
-        Member member = new Member("asd", "안녕", "asd123", new Address("서울", "경기도"), LocalDateTime.now());
+        Member member = new Member("asd", "안녕", "asd123", new Address("서울", "경기도"));
         em.persist(member);
 
         Delivery delivery = new Delivery(member.getAddress());
@@ -39,7 +39,7 @@ class MemberTest {
 
     @Test
     void save() {
-        Member member = new Member("asd", "안녕", "asd123", new Address("서울", "경기도"), LocalDateTime.now());
+        Member member = new Member("asd", "안녕", "asd123", new Address("서울", "경기도"));
         memberService.signUp(member);
 
     }

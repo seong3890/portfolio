@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import yms.shopping.portfolio.domain.item.Items;
 import yms.shopping.portfolio.domain.item.UploadImage;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,8 @@ import java.util.stream.Collectors;
 public class ItemMainDto {
     private Long id;
     private String name;
+    private String nickname;
+
     private UploadDto uploadDto;
     private List<UploadDto> uploadDtos;
 
@@ -20,6 +23,7 @@ public class ItemMainDto {
     public ItemMainDto(Items items) {
         this.id = items.getId();
         this.name = items.getName();
+        this.nickname = items.getMember().getNickname();
         this.uploadDtos = items.getUploadImage().stream().map(u-> new UploadDto(u)).collect(Collectors.toList());
         this.uploadDto = uploadDtos.get(0);
     }
