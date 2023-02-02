@@ -22,6 +22,7 @@ import static javax.persistence.FetchType.LAZY;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@Table(name = "posts")
 public class Post extends BaseTimeEntity {
 
     @Id @GeneratedValue

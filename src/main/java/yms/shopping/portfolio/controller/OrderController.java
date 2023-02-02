@@ -53,9 +53,7 @@ public class OrderController {
             , @ModelAttribute("orderSearch") OrderSearch orderSearch, Model model) {
         Page<OrderDto> pageList = orderService.findPageList(orderSearch, pageable);
         model.addAttribute("order", pageList);
-        for (OrderDto orderDto : pageList) {
-//            System.out.println("orderDto = " + orderDto.getOrderInfoDtoList().get(0).getName());
-        }
+
         log.info("orderDto={}",pageList.get());
         return "order/orderList";
     }

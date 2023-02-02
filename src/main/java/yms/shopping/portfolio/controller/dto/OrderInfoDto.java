@@ -2,6 +2,7 @@ package yms.shopping.portfolio.controller.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
+import yms.shopping.portfolio.domain.order.OrderInfo;
 
 @Data
 public class OrderInfoDto {
@@ -16,5 +17,9 @@ public class OrderInfoDto {
         this.name = name;
         this.orderPrice = orderPrice;
         this.count = count;
+    }
+
+    public OrderInfoDto(OrderInfo orderInfo) {
+
     }
 }

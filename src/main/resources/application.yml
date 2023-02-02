@@ -3,10 +3,12 @@ spring:
   datasource:
 #    url: jdbc:h2:mem:localdb
     url: jdbc:h2:tcp://localhost/~/localdb
+#    url: jdbc:oracle:thin:@localhost:1521/orcl
 #    url: jdbc:h2:~/localdb
     username: sa
     password:
     driver-class-name: org.h2.Driver
+#    driver-class-name: oracle.jdbc.driver.OracleDriver
 
   jpa:
     hibernate:
@@ -17,6 +19,7 @@ spring:
         format_sql: true
         default_batch_fetch_size: 1000 #최적화 옵션
     open-in-view: false
+#    database-platform: org.hibernate.dialect.Oracle10gDialect
   data:
     web:
       pageable:

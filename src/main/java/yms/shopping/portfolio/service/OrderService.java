@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import yms.shopping.portfolio.controller.dto.OrderDto;
+import yms.shopping.portfolio.controller.dto.OrderInfoDto;
 import yms.shopping.portfolio.controller.dto.OrderSearch;
 import yms.shopping.portfolio.domain.Member;
 import yms.shopping.portfolio.domain.item.Items;
@@ -18,6 +19,9 @@ import yms.shopping.portfolio.repository.ItemJpaRepository;
 import yms.shopping.portfolio.repository.MemberJpaRepository;
 import yms.shopping.portfolio.repository.OrderJpaRepository;
 import yms.shopping.portfolio.repository.query.OrderQueryRepository;
+
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -44,6 +48,8 @@ public class OrderService {
 
     public Page<OrderDto> findPageList(OrderSearch search, Pageable pageable) {
         Page<OrderDto> orderDtos = orderQueryRepository.searchPage(search, pageable);
+
+
         return orderDtos;
     }
 

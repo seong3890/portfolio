@@ -14,6 +14,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@Table(name = "comments")
 public class Comment {
 
     @Id @GeneratedValue
